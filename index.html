@@ -3,9 +3,13 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css"/>
 		<meta charset="UTF-8"/>
+		<script src="head_handler.js"></script>
+		<script src="home_handler.js"></script>
+		<script src="list_handler.js"></script>
+		<script src="props_handler.js"></script>
 		<title>SVG Editor 4.0</title>
 	</head>
-	<body>
+	<body onload="var h = new HeadHandler();">
 		<header>
 			<button id="home_button">Home</button>
 			<span id="toolbox">
@@ -54,5 +58,131 @@
 			</defs>
 			<rect id="pg" x="0.5" y="0.5" width="400" height="400" fill="white" stroke="black" filter="url(#page)"/>
 		</svg>
+		<div class="menu" id="home" style="display: none">
+			<div class="menu_item" id="new_item">New</div>
+			<div class="menu_item" id="load_item">Load</div>
+			<div class="menu_item" id="save_item">Save</div>
+		</div>
+		<div class="properties" id="properties" style="display: none">
+			<table><tbody>
+				<tr class="svg">
+					<th><label for="bg">Backgound:</label></th>
+					<td><input type="text" id="bg"/></td>
+				</tr>
+				<tr class="circle ellipse g path rect text">
+					<th><label for="fill">Fill color:</label></th>
+					<td><input type="text" id="fill"/></td>
+				</tr>
+				<tr class="circle ellipse g path rect text">
+					<th><label for="fill-opacity">Fill opacity:</label></th>
+					<td><input type="number" id="fill-opacity" min="0" max="1" step="0.01"/></td>
+				</tr>
+				<tr class="circle ellipse g path rect">
+					<th><label for="stroke">Stroke color:</label></th>
+					<td><input type="text" id="stroke"/></td>
+				</tr>
+				<tr class="circle ellipse g path rect text">
+					<th><label for="stroke-opacity">Stroke opacity:</label></th>
+					<td><input type="number" id="stroke-opacity" min="0" max="1" step="0.01"/></td>
+				</tr>
+				<tr class="circle ellipse path rect">
+					<th><label for="stroke-width">Stroke width:</label></th>
+					<td><input type="number" id="stroke-width" min="0"/></td>
+				</tr>
+				<tr class="circle ellipse path rect">
+					<th><label for="stroke-linecap">Stroke linecap:</label></th>
+					<td><select id="stroke-linecap">
+						<option value="butt">Butt</option>
+						<option value="round">Round</option>
+						<option value="square">Square</option>
+					</select></td>
+				</tr>
+				<tr class="circle ellipse path rect">
+					<th><label for="stroke-linejoin">Stroke linejoin:</label></th>
+					<td><select id="stroke-linejoin">
+						<option value="miter">Miter</option>
+						<option value="round">Round</option>
+						<option value="bevel">Bevel</option>
+					</select></td>
+				</tr>
+				<tr class="circle ellipse g path rect text">
+					<th><label for="transform">Transform:</label></th>
+					<td><input type="text" id="transform"/></td>
+				</tr>
+				<tr class="rect text">
+					<th><label for="x">X:</label></th>
+					<td><input type="number" id="x"/></td>
+				</tr>
+				<tr class="rect text">
+					<th><label for="y">Y:</label></th>
+					<td><input type="number" id="y"/></td>
+				</tr>
+				<tr class="circle ellipse">
+					<th><label for="cx">Center x:</label></th>
+					<td><input type="number" id="cx"/></td>
+				</tr>
+				<tr class="circle ellipse">
+					<th><label for="cy">Center y:</label></th>
+					<td><input type="number" id="cy"/></td>
+				</tr>
+				<tr class="rect svg">
+					<th><label for="width">Width:</label></th>
+					<td><input type="number" id="width" min="0"/></td>
+				</tr>
+				<tr class="rect svg">
+					<th><label for="height">Height:</label></th>
+					<td><input type="number" id="height" min="0"/></td>
+				</tr>
+				<tr class="circle">
+					<th><label for="r">Radius:</label></th>
+					<td><input type="number" id="r" min="0"/></td>
+				</tr>
+				<tr class="ellipse rect">
+					<th><label for="rx">Radius x:</label></th>
+					<td><input type="number" id="rx" min="0"/></td>
+				</tr>
+				<tr class="ellipse rect">
+					<th><label for="ry">Radius y:</label></th>
+					<td><input type="number" id="ry" min="0"/></td>
+				</tr>
+				<tr class="path">
+					<th><label for="d">Data:</label></th>
+					<td><textarea id="d" cols="25" rows="10"></textarea></td>
+				</tr>
+				<tr class="text">
+					<th><label for="font-family">Font family:</label></th>
+					<td><input type="text" id="font-family"/></td>
+				</tr>
+				<tr class="text">
+					<th><label for="font-size">Font size:</label></th>
+					<td><input type="number" id="font-size" min="3"/></td>
+				</tr>
+				<tr class="text">
+					<th><label for="font-style">Font style:</label></th>
+					<td><select id="font-style">
+						<option value="normal">Normal</option>
+						<option value="italic">Italic</option>
+						<option value="oblique">Oblique</option>
+					</select></td>
+				</tr>
+				<tr class="text">
+					<th><label for="font-weight">Font weight:</label></th>
+					<td><select id="font-weight">
+						<option value="normal">Normal</option>
+						<option value="bold">Bold</option>
+						<option value="bolder">Bolder</option>
+						<option value="lighter">Lighter</option>
+					</select></td>
+				</tr>
+				<tr class="text">
+					<th><label for="body">Body:</label></th>
+					<td><textarea id="body" cols="25" rows="3"></textarea></td>
+				</tr>
+			</tbody></table>
+			<div class="button_box">
+				<button id="apply_button">Apply</button>
+				<button id="close_button">Close</button>
+			</div>
+		</div>
 	</body>
 </html>

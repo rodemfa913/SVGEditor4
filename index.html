@@ -1,20 +1,58 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<link rel="stylesheet" type="text/css" href="style.css"/>
 		<meta charset="UTF-8"/>
 		<title>SVG Editor 4.0</title>
 	</head>
 	<body>
 		<header>
-			<button id="save_button">Save</button>
+			<button id="home_button">Home</button>
 			<span id="toolbox">
 				Types:
 				<select id="type_select">
 					<option value="circle">Circle</option>
 					<option value="ellipse">Ellipse</option>
 					<option value="g">Group</option>
+					<option value="path">Path</option>
+					<option value="rect">Rectangle</option>
+					<option value="text">Text</option>
 				</select>
+				<button id="add_button">Add</button>
+				<button id="edit_button">Edit</button>
+				<button id="remove_button">Remove</button>
+				Move:
+				<button id="back_button">&larr;</button>
+				<button id="forward_button">&rarr;</button>
+			</span>
+			<span id="navi">
+				Zoom factor:
+				<input type="number" id="zoom" min="-6" max="6" value="0"/>
+				Pan:
+				<input type="number" id="pan_x" step="10" value="200"/>
+				<input type="number" id="pan_y" step="10" value="200"/>
+				Cursor:
+				<span id="cursor">0, 0</span>
 			</span>
 		</header>
+		<aside>
+			<ul class="root" id="list">
+				<li><span id="i0">svg</span></li>
+			</ul>
+		</aside>
+		<svg id="g0" width="800" height="600" viewBox="-200 -100 800 600">
+			<defs>
+				<filter id="shadow">
+					<feOffset result="offOut" in="SourceAlpha"/>
+					<feGaussianBlur result="blurOut" in="offOut" stdDeviation="5"/>
+					<feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+				</filter>
+				<filter id="page">
+					<feOffset id="fo" result="offOut" in="SourceAlpha" dx="3" dy="3"/>
+					<feBlend in="SourceGraphic" in2="offOut" mode="normal"/>
+				</filter>
+			</defs>
+			<rect id="pg" x="0.5" y="0.5" width="400" height="400" fill="white" stroke="black" filter="url(#page)"/>
+		</svg>
 	</body>
 </html>

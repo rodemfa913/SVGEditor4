@@ -1,0 +1,79 @@
+aside {
+	border: 1px solid gray;
+	padding: 0px 5px;
+	display: inline-block;
+	height: 600px;
+	margin-right: 5px;
+	overflow: auto;
+	width: 300px
+}
+
+body {
+	font: 13px sans-serif
+}
+
+button, input, select {
+	font: inherit
+}
+
+.button_box, th {
+	text-align: right
+}
+/*
+.canvas {
+	border: 1px solid gray;
+	display: inline-block;
+	height: 600px;
+	overflow: hidden
+}
+*/
+header {
+	margin-bottom: 3px
+}
+
+li.selected {
+	background-color: #88f;
+	color: white;
+}
+
+li > span {
+	cursor: pointer;
+}
+
+.menu, .properties {
+	background-color: white;
+	border: 1px solid gray;
+	left: 5px;
+	padding: 3px 5px;
+	position: fixed;
+	top: 5px
+}
+
+.menu_item {
+	cursor: pointer;
+	width: 100px
+}
+
+#navi, #toolbox {
+	margin-left: 5px
+}
+
+#navi > input {
+	width: 75px
+}
+
+svg {
+	border: 1px solid gray;
+	display: inline-block;
+}
+
+ul {
+	list-style-position: inside;
+	list-style-type: none;
+	padding-left: 15px
+}
+
+ul.root {
+	list-style-type: initial;
+	padding-left: 0px
+}

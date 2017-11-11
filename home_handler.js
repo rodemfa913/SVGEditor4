@@ -1,11 +1,9 @@
 class HomeHandler {
 	constructor() {
-		this.homeBox = document.getElementById("home");
-
-		var me = this;
-		document.getElementById("save_item").onclick = function() { me.save(); };
+		this.homeStyle = document.getElementById("home").style;
 	}
 
-	open() { this.homeBox.style.display = "initial"; }
-	save() { this.homeBox.style.display = "none"; }
+	close() { this.homeStyle.display = "none"; }
+	isOpen() { return this.homeStyle.display !== "none"; }
+	open() { this.homeStyle.display = "block"; }
 }

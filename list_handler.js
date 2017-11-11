@@ -2,11 +2,16 @@ class ListHandler {
 	constructor() {
 		this.counter = 1;
 		var s = document.getElementById("i0");
+		this.listStyle = document.getElementById("list").style;
 		this.selection = { graphic: document.getElementById("g0"), item: s.parentElement };
 
 		var me = this;
 		s.onclick = function() { me.select(this); };
 	}
+
+	close() { this.listStyle.display = "none"; }
+	isOpen() { return this.listStyle.display !== "none"; }
+	open() { this.listStyle.display = "block"; }
 
 	add(newGraphic) {
 		var parent = this.selection;

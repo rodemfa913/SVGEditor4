@@ -2,11 +2,10 @@ class PropsHandler {
 	constructor() {
 		this.graphic = null;
 		this.properties = null;
-		this.PropsBox = document.getElementById("properties");
+		this.propsBox = document.getElementById("properties");
 
 		var me = this;
 		document.getElementById("apply_button").onclick = function() { me.apply(); };
-		document.getElementById("close_button").onclick = function() { me.close(); };
 	}
 
 	apply() {
@@ -22,23 +21,22 @@ class PropsHandler {
 		}
 	}
 
-	close() { this.PropsBox.style.display = "none"; }
+	close() { this.propsBox.style.display = "none"; }
+	isOpen() { return this.propsBox.style.display !== "none"; }
 
 	open(g) {
-		if (this.PropsBox.style.display !== "none") return;
-
 		this.graphic = g;
 		var tag = this.graphic.tagName;
 		if (tag === "svg") {
 			this.graphic = document.getElementById("pg");
 		}
 
-		var props = this.PropsBox.getElementsByTagName("TR");
+		var props = this.propsBox.getElementsByTagName("TR");
 		for (var i = 0; i < props.length; i++) {
 			props[i].style.display = "none";
 		}
 
-		this.properties = this.PropsBox.getElementsByClassName(tag);
+		this.properties = this.propsBox.getElementsByClassName(tag);
 		for (var j = 0; j < this.properties.length; j++) {
 			var p = this.properties[j];
 			p.style.display = "table-row";
@@ -52,6 +50,6 @@ class PropsHandler {
 			}
 		}
 
-		this.PropsBox.style.display = "initial";
+		this.propsBox.style.display = "block";
 	}
 }

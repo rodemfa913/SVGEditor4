@@ -22,16 +22,16 @@
 				<div class="menu_item">Load</div>
 				<div class="menu_item" id="save_item">Save</div>
 			</div>
-			<div class="drop" id="navi" style="display: none">
+			<div class="drop" id="navi" style="display: none; bottom: 0; right: 0">
+				Cursor:
+				<span id="cursor">0, 0</span>
 				Zoom factor:
 				<input type="number" id="zoom" min="-6" max="6" value="0"/>
 				Pan:
 				<input type="number" id="pan_x" step="10" value="200"/>
 				<input type="number" id="pan_y" step="10" value="200"/>
-				Cursor:
-				<span id="cursor">0, 0</span>
 			</div>
-			<div class="drop list" id="list" style="display: none">
+			<div class="drop list" id="list" style="display: none; bottom: 0">
 				<ul class="root" id="list">
 					<li><span id="i0">svg</span></li>
 				</ul>

@@ -13,46 +13,48 @@
 	</head>
 	<body onload="var h = new HeadHandler();">
 		<header>
-			<button id="home_button">Home</button>
+			<div class="drop_container">
+				<button id="home_button">Home</button>
+				<div class="drop_content float" id="home" style="display: none">
+					<div class="menu_item">New</div>
+					<div class="menu_item">Load</div>
+					<div class="menu_item" id="save_item">Save</div>
+				</div>
+			</div>
 			<button id="list_button">List</button>
 			<button id="navi_button">Navigate</button>
 			<button id="tools_button">Tools</button>
-			<div class="drop" id="home" style="display: none">
-				<div class="menu_item">New</div>
-				<div class="menu_item">Load</div>
-				<div class="menu_item" id="save_item">Save</div>
-			</div>
-			<div class="drop" id="navi" style="display: none; bottom: 0; right: 0">
-				Cursor:
-				<span id="cursor">0, 0</span>
-				Zoom factor:
-				<input type="number" id="zoom" min="-6" max="6" value="0"/>
-				Pan:
-				<input type="number" id="pan_x" step="10" value="200"/>
-				<input type="number" id="pan_y" step="10" value="200"/>
-			</div>
-			<div class="drop list" id="list" style="display: none; bottom: 0">
-				<ul class="root" id="list">
-					<li><span id="i0">svg</span></li>
-				</ul>
-			</div>
-			<div class="drop" id="tools" style="display: none; right: 0">
-				Types:
-				<select id="type_select">
-					<option value="circle">Circle</option>
-					<option value="ellipse">Ellipse</option>
-					<option value="g">Group</option>
-					<option value="path">Path</option>
-					<option value="rect">Rectangle</option>
-					<option value="text">Text</option>
-				</select>
-				<button id="add_button">Add</button>
+		</header>
+		<!--div class="canvas"-->
+		<svg id="g0" style="position: absolute; z-index: -1">
+			<defs>
+				<filter id="shadow">
+					<feOffset result="offOut" in="SourceAlpha"/>
+					<feGaussianBlur result="blurOut" in="offOut" stdDeviation="5"/>
+					<feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
+				</filter>
+				<filter id="page">
+					<feOffset id="fo" result="offOut" in="SourceAlpha" dx="3" dy="3"/>
+					<feBlend in="SourceGraphic" in2="offOut" mode="normal"/>
+				</filter>
+			</defs>
+			<rect id="pg" x="0.5" y="0.5" width="400" height="400" fill="white" stroke="black" filter="url(#page)"/>
+		</svg>
+		<!--/div-->
+		<div class="float" id="tools" style="display: none">
+			Types:
+			<select id="type_select">
+				<option value="circle">Circle</option>
+				<option value="ellipse">Ellipse</option>
+				<option value="g">Group</option>
+				<option value="path">Path</option>
+				<option value="rect">Rectangle</option>
+				<option value="text">Text</option>
+			</select>
+			<button id="add_button">Add</button>
+			<div class="drop_container">
 				<button id="edit_button">Edit</button>
-				<button id="remove_button">Remove</button>
-				Move:
-				<button id="back_button">&larr;</button>
-				<button id="forward_button">&rarr;</button>
-				<div class="drop" id="properties" style="display: none">
+				<div class="drop_content float" id="properties" style="display: none">
 					<table><tbody>
 						<tr class="svg">
 							<th><label for="bg">Backgound:</label></th>
@@ -171,20 +173,24 @@
 					<button id="apply_button">Apply</button>
 				</div>
 			</div>
-		</header>
-		<!--div class="canvas"--><svg id="g0">
-			<defs>
-				<filter id="shadow">
-					<feOffset result="offOut" in="SourceAlpha"/>
-					<feGaussianBlur result="blurOut" in="offOut" stdDeviation="5"/>
-					<feBlend in="SourceGraphic" in2="blurOut" mode="normal"/>
-				</filter>
-				<filter id="page">
-					<feOffset id="fo" result="offOut" in="SourceAlpha" dx="3" dy="3"/>
-					<feBlend in="SourceGraphic" in2="offOut" mode="normal"/>
-				</filter>
-			</defs>
-			<rect id="pg" x="0.5" y="0.5" width="400" height="400" fill="white" stroke="black" filter="url(#page)"/>
-		</svg><!--/div-->
+			<button id="remove_button">Remove</button>
+			Move:
+			<button id="back_button">&larr;</button>
+			<button id="forward_button">&rarr;</button>
+		</div>
+		<div class="float" id="navi" style="display: none">
+			Zoom factor:
+			<input type="number" id="zoom" min="-6" max="6" value="0"/>
+			Pan:
+			<input type="number" id="pan_x" step="10" value="200"/>
+			<input type="number" id="pan_y" step="10" value="200"/>
+			Cursor:
+			<span id="cursor">0, 0</span>
+		</div>
+		<div class="float list" id="list" style="display: none">
+			<ul class="root" id="list">
+				<li><span id="i0">svg</span></li>
+			</ul>
+		</div>
 	</body>
 </html>

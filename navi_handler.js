@@ -36,7 +36,7 @@ class NaviHandler {
 
 	close() { this.naviStyle.display = "none"; }
 	isOpen() { return this.naviStyle.display !== "none"; }
-	open() { this.naviStyle.display = "block"; }
+	open() { this.naviStyle.display = "inline-block"; }
 
 	setViewBox() {
 		this.zoom = Math.pow(2, this.zoomFactor.value / 2);

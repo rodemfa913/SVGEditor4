@@ -15,7 +15,7 @@ class ToolsHandler {
 
 	close() { this.toolsStyle.display = "none"; }
 	isOpen() { return this.toolsStyle.display !== "none"; }
-	open() { this.toolsStyle.display = "block"; }
+	open() { this.toolsStyle.display = "inline-block"; }
 
 	add() {
 		var type = this.typeSelect.value;

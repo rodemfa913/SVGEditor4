@@ -9,13 +9,22 @@ button, input, select { font: inherit }
 	overflow: hidden
 }
 */
-.drop {
-	background-color: white;
-	box-shadow: 0px 0px 8px;
-	margin: 3px 0px;
-	padding: 3px 5px;
+.drop_container {
+	display: inline-block;
+	position: relative
+}
+
+.drop_content {
 	position: absolute;
 	z-index: 1
+}
+
+.float {
+	background-color: white;
+	box-shadow: 0px 0px 8px;
+	margin-bottom: 3px;
+	margin-right: 5px;
+	padding: 3px 5px;
 }
 
 header { margin-bottom: 3px }
@@ -28,9 +37,9 @@ li.selected {
 li > span { cursor: pointer; }
 
 .list {
-	height: 450px;
+	height: 200px;
 	overflow: auto;
-	width: 300px
+	width: 200px
 }
 
 .menu_item {

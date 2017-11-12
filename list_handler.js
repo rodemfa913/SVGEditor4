@@ -97,7 +97,7 @@ class ListHandler {
 	}
 
 	select(s) {
-		this.selection.graphic.setAttribute("filter", "");
+		this.selection.graphic.removeAttribute("filter");
 		this.selection.item.className = "";
 
 		var id = s.id.substring(1);

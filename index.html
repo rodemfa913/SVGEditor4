@@ -54,7 +54,7 @@
 			<button id="add_button">Add</button>
 			<div class="drop_container">
 				<button id="edit_button">Edit</button>
-				<div class="drop_content float properties" id="properties" style="display: none;">
+				<div class="drop_content float" id="properties" style="display: none;">
 					<table><tbody>
 						<tr class="svg">
 							<th><label for="bg">Backgound:</label></th>
@@ -72,7 +72,7 @@
 							<th><label for="stroke">Stroke color:</label></th>
 							<td><input type="text" id="stroke"/></td>
 						</tr>
-						<tr class="circle ellipse g path rect text">
+						<tr class="circle ellipse g path rect">
 							<th><label for="stroke-opacity">Stroke opacity:</label></th>
 							<td><input type="number" id="stroke-opacity" min="0" max="1" step="0.01"/></td>
 						</tr>
@@ -138,7 +138,7 @@
 						</tr>
 						<tr class="path">
 							<th><label for="d">Data:</label></th>
-							<td><textarea id="d" cols="25" rows="10"></textarea></td>
+							<td><textarea id="d" cols="24" rows="10"></textarea></td>
 						</tr>
 						<tr class="text">
 							<th><label for="font-family">Font family:</label></th>
@@ -167,7 +167,7 @@
 						</tr>
 						<tr class="text">
 							<th><label for="body">Body:</label></th>
-							<td><textarea id="body" cols="25" rows="3"></textarea></td>
+							<td><textarea id="body" cols="24" rows="3"></textarea></td>
 						</tr>
 					</tbody></table>
 					<button id="apply_button">Apply</button>

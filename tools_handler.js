@@ -1,13 +1,15 @@
 class ToolsHandler {
 	constructor(lh) {
+		this.editButton = document.getElementById("edit_button");
 		this.listHandler = lh;
 		this.propsHandler = new PropsHandler();
+		this.toolsButton = document.getElementById("tools_button");
 		this.toolsStyle = document.getElementById("tools").style;
 		this.typeSelect = document.getElementById("type_select");
 
 		var me = this;
 		document.getElementById("add_button").onclick = function() { me.add(); };
-		document.getElementById("edit_button").onclick = function() { me.edit(); };
+		this.editButton.onclick = function() { me.edit(); };
 		document.getElementById("remove_button").onclick = function() { me.listHandler.remove(); };
 		document.getElementById("back_button").onclick = function() { me.listHandler.moveBack(); };
 		document.getElementById("forward_button").onclick = function() { me.listHandler.moveForward(); };
@@ -55,8 +57,10 @@ class ToolsHandler {
 
 	edit() {
 		if (this.propsHandler.isOpen()) {
+			this.editButton.className = "";
 			this.propsHandler.close();
 		} else {
+			this.editButton.className = "active";
 			this.propsHandler.open(this.listHandler.selection.graphic);
 		}
 	}

@@ -1,6 +1,18 @@
 body { font: 13px sans-serif }
 
 button, input, select { font: inherit }
+
+button, select {
+	background-color: #eee;
+	border: 1px solid gray;
+	border-radius: 3px;
+	padding: 3px 6px
+}
+
+button.active {
+	background-color: gray;
+	color: white
+}
 /*
 .canvas {
 	border: 1px solid gray;
@@ -52,11 +64,16 @@ li > span { cursor: pointer; }
 
 #navi > input { width: 75px }
 
-.properties { min-width: 300px }
-
 svg { border: 1px solid gray }
 
-th { text-align: right }
+textarea { font: 13px monospace }
+
+th {
+	min-width: 100px;
+	text-align: right
+}
+
+td > input, td > select { width: 150px }
 
 ul {
 	list-style-position: inside;

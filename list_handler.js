@@ -1,9 +1,13 @@
 class ListHandler {
 	constructor() {
 		this.counter = 1;
-		var s = document.getElementById("i0");
 		this.listStyle = document.getElementById("list").style;
-		this.selection = { graphic: document.getElementById("g0"), item: s.parentElement };
+
+		var s = document.getElementById("i0");
+		this.selection = {
+			graphic: document.getElementById("g0"),
+			item: s.parentElement
+		};
 
 		var me = this;
 		s.onclick = function() { me.select(this); };

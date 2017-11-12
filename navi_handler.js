@@ -18,14 +18,13 @@ class NaviHandler {
 		this.page = document.getElementById("pg");
 		this.panX = document.getElementById("pan_x");
 		this.panY = document.getElementById("pan_y");
-
 		this.viewBox = new ViewBox(-200, -100, 800, 600);
+		this.zoom = 1.0;
+		this.zoomFactor = document.getElementById("zoom");
+
 		this.canvas.setAttribute("width", 800);
 		this.canvas.setAttribute("height", 600);
 		this.canvas.setAttribute("viewBox", this.viewBox.toString());
-
-		this.zoom = 1.0;
-		this.zoomFactor = document.getElementById("zoom");
 
 		var me = this;
 		this.zoomFactor.onchange =

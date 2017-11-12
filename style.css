@@ -6,6 +6,7 @@ button, select {
 	background-color: #eee;
 	border: 1px solid gray;
 	border-radius: 3px;
+	margin: 0px;
 	padding: 3px 6px
 }
 

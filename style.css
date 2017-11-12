@@ -52,6 +52,8 @@ li > span { cursor: pointer; }
 
 #navi > input { width: 75px }
 
+.properties { min-width: 300px }
+
 svg { border: 1px solid gray }
 
 th { text-align: right }

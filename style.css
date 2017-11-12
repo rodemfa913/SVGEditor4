@@ -65,7 +65,13 @@ li > span { cursor: pointer; }
 
 #navi > input { width: 75px }
 
-svg { border: 1px solid gray }
+svg {
+	border: 1px solid gray;
+	left: 0px;
+	position: absolute;
+	top: 0px;
+	z-index: -1;
+}
 
 textarea { font: 13px monospace }
 

@@ -57,8 +57,8 @@ class NaviHandler {
 	}
 
 	showCoords(evt) {
-		var x = this.viewBox.x + evt.offsetX / this.zoom;
-		var y = this.viewBox.y + evt.offsetY / this.zoom;
+		var x = this.viewBox.x + evt.pageX / this.zoom;
+		var y = this.viewBox.y + evt.pageY / this.zoom;
 		this.cursor.innerHTML = parseInt(x) + ", " + parseInt(y);
 	}
 }

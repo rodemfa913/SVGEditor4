@@ -2,26 +2,27 @@ body { font: 13px sans-serif }
 
 button, input, select { font: inherit }
 
-button, select {
-	background-color: #eee;
-	border: 1px solid gray;
-	border-radius: 3px;
+button {
+	background-color: transparent;
+	border: none;
 	margin: 0px;
 	padding: 3px 6px
 }
+
+button:hover { background-color: #eee }
 
 button.active {
 	background-color: gray;
 	color: white
 }
-/*
-.canvas {
+
+/*.canvas {
 	border: 1px solid gray;
 	display: inline-block;
 	height: 600px;
 	overflow: hidden
-}
-*/
+}*/
+
 .drop_container {
 	display: inline-block;
 	position: relative
@@ -50,7 +51,8 @@ li.selected {
 li > span { cursor: pointer; }
 
 .list {
-	height: 200px;
+	float: right;
+	height: 400px;
 	overflow: auto;
 	width: 200px
 }
@@ -63,13 +65,14 @@ li > span { cursor: pointer; }
 
 .menu_item:hover { background-color: #eee }
 
-#navi > input { width: 75px }
+#navi { margin-left: 15px }
+/*#navi > input { width: 75px }*/
 
 svg {
 	border: 1px solid gray;
 	left: 0px;
 	position: absolute;
-	top: 0px;
+	top: 40px;
 	z-index: -1;
 }
 

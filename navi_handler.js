@@ -14,32 +14,41 @@ class NaviHandler {
 		this.canvas = document.getElementById("g0");
 		this.cursor = document.getElementById("cursor");
 		this.feOffset = document.getElementById("fo");
-		this.naviStyle = document.getElementById("navi").style;
 		this.page = document.getElementById("pg");
-		this.panX = document.getElementById("pan_x");
-		this.panY = document.getElementById("pan_y");
-		this.viewBox = new ViewBox(-200, -100, 800, 600);
+		this.panX = 200;
+		this.panY = 300;
+		this.viewBox = new ViewBox(-100, -100, 600, 800);
 		this.zoom = 1.0;
-		this.zoomFactor = document.getElementById("zoom");
-
-		this.canvas.setAttribute("width", 800);
-		this.canvas.setAttribute("height", 600);
-		this.canvas.setAttribute("viewBox", this.viewBox.toString());
+		this.zoomFactor = 0;
 
 		var me = this;
-		this.zoomFactor.onchange =
-		this.panX.onchange =
-		this.panY.onchange = function() { me.setViewBox(); };
+		document.getElementById("zoom_in").onclick =
+		document.getElementById("zoom_out").onclick = function() { me.setZoom(this); };
+		document.getElementById("pan_left").onclick =
+		document.getElementById("pan_right").onclick =
+		document.getElementById("pan_up").onclick =
+		document.getElementById("pan_down").onclick = function() { me.setPan(this) };
 		this.canvas.onmousemove = function(evt) { me.showCoords(evt); };
 	}
 
-	close() { this.naviStyle.display = "none"; }
-	isOpen() { return this.naviStyle.display !== "none"; }
-	open() { this.naviStyle.display = "inline-block"; }
+	setPan(button) {
+		switch (button.id) {
+		case "pan_left":
+			this.panX += 10;
+			break;
+		case "pan_right":
+			this.panX -= 10;
+			break;
+		case "pan_up":
+			this.panY += 10;
+			break;
+		default:
+			this.panY -= 10;
+		}
+		this.setViewBox();
+	}
 
 	setViewBox() {
-		this.zoom = Math.pow(2, this.zoomFactor.value / 2);
-
 		var strokeWidth = 1 / this.zoom;
 		this.page.setAttribute("x", strokeWidth / 2);
 		this.page.setAttribute("y", strokeWidth / 2);
@@ -49,16 +58,23 @@ class NaviHandler {
 		this.feOffset.setAttribute("dx", offset);
 		this.feOffset.setAttribute("dy", offset);
 
-		this.viewBox.width = 800 / this.zoom;
-		this.viewBox.height = 600 / this.zoom;
-		this.viewBox.x = this.panX.value - this.viewBox.width / 2;
-		this.viewBox.y = this.panY.value - this.viewBox.height / 2;
+		this.viewBox.width = 600 / this.zoom;
+		this.viewBox.height = 800 / this.zoom;
+		this.viewBox.x = this.panX - this.viewBox.width / 2;
+		this.viewBox.y = this.panY - this.viewBox.height / 2;
 		this.canvas.setAttribute("viewBox", this.viewBox.toString());
+	}
+
+	setZoom(button) {
+		if (button.id === "zoom_in") this.zoomFactor++;
+		else this.zoomFactor--;
+		this.zoom = Math.pow(2, this.zoomFactor / 2);
+		this.setViewBox();
 	}
 
 	showCoords(evt) {
 		var x = this.viewBox.x + evt.pageX / this.zoom;
-		var y = this.viewBox.y + evt.pageY / this.zoom;
+		var y = this.viewBox.y + (evt.pageY - 40) / this.zoom;
 		this.cursor.innerHTML = parseInt(x) + ", " + parseInt(y);
 	}
 }

@@ -1,9 +1,8 @@
 class HeadHandler {
-	constructor() {
-		this.homeHandler = new HomeHandler();
-		this.listHandler = new ListHandler();
-		this.naviHandler = new NaviHandler();
-		this.toolsHandler = new ToolsHandler(this.listHandler);
+	constructor(hh, lh, th) {
+		this.homeHandler = hh;
+		this.listHandler = lh;
+		this.toolsHandler = th;
 
 		var me = this;
 		document.getElementById("home_button").onclick = function() {
@@ -11,9 +10,6 @@ class HeadHandler {
 		};
 		document.getElementById("list_button").onclick = function() {
 			me.toggleDisplay(this, me.listHandler);
-		};
-		document.getElementById("navi_button").onclick = function() {
-			me.toggleDisplay(this, me.naviHandler);
 		};
 		document.getElementById("tools_button").onclick = function() {
 			me.toggleDisplay(this, me.toolsHandler);

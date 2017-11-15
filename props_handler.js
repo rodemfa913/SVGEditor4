@@ -11,7 +11,7 @@ class PropsHandler {
 	apply() {
 		for (var i = 0; i < this.properties.length; i++) {
 			var input = this.properties[i].getElementsByTagName("TD")[0].firstElementChild;
-			if (input.id === "bg") { // svg
+			if (input.id === "bg") { // root
 				this.graphic.setAttribute("fill", input.value);
 			} else if (input.id === "body") { // text
 				this.graphic.textContent = input.value;
@@ -22,13 +22,15 @@ class PropsHandler {
 	}
 
 	close() { this.propsBox.style.display = "none"; }
-	isOpen() { return this.propsBox.style.display !== "none"; }
 
 	open(g) {
 		this.graphic = g;
-		var tag = this.graphic.tagName;
-		if (tag === "svg") {
+		var tag;
+		if (this.graphic.id === "g0") {
+			tag = "root";
 			this.graphic = document.getElementById("pg");
+		} else {
+			tag = this.graphic.tagName;
 		}
 
 		var props = this.propsBox.getElementsByTagName("TR");
@@ -41,7 +43,7 @@ class PropsHandler {
 			var p = this.properties[j];
 			p.style.display = "table-row";
 			var input = p.getElementsByTagName("TD")[0].firstElementChild;
-			if (input.id === "bg") { // svg
+			if (input.id === "bg") { // root
 				input.value = this.graphic.getAttribute("fill");
 			} else if (input.id === "body") { // text
 				input.value = this.graphic.textContent;

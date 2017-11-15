@@ -56,12 +56,10 @@ class ToolsHandler {
 	}
 
 	edit() {
-		if (this.propsHandler.isOpen()) {
-			this.editButton.className = "";
-			this.propsHandler.close();
-		} else {
-			this.editButton.className = "active";
+		if (this.editButton.classList.toggle("active")) {
 			this.propsHandler.open(this.listHandler.selection.graphic);
+		} else {
+			this.propsHandler.close();
 		}
 	}
 }

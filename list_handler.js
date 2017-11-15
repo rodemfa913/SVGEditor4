@@ -14,12 +14,11 @@ class ListHandler {
 	}
 
 	close() { this.listStyle.display = "none"; }
-	isOpen() { return this.listStyle.display !== "none"; }
 	open() { this.listStyle.display = "block"; }
 
 	add(newGraphic) {
 		var parent = this.selection;
-		if (parent.graphic.tagName !== "svg" && parent.graphic.tagName !== "g") {
+		if (parent.graphic.tagName !== "g") {
 			parent = this.getParent();
 		}
 
@@ -98,14 +97,14 @@ class ListHandler {
 
 	select(s) {
 		this.selection.graphic.removeAttribute("filter");
-		this.selection.item.className = "";
+		this.selection.item.classList.remove("selected");
 
 		var id = s.id.substring(1);
 		this.selection.graphic = document.getElementById("g" + id);
 		this.selection.item = s.parentElement;
 		if (id !== "0") {
 			this.selection.graphic.setAttribute("filter", "url(#shadow)");
-			this.selection.item.className = "selected";
+			this.selection.item.classList.add("selected");
 		}
 	}
 
@@ -113,7 +112,7 @@ class ListHandler {
 		var id = checkbox.id.substring(1);
 		var style = document.getElementById("g" + id).style;
 		if (checkbox.checked) {
-			style.display = "";
+			style.display = "inline";
 		} else {
 			style.display = "none";
 		}

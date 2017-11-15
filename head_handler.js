@@ -17,12 +17,10 @@ class HeadHandler {
 	}
 
 	toggleDisplay(button, handler) {
-		if (handler.isOpen()) {
-			button.className = "";
-			handler.close();
-		} else {
-			button.className = "active";
+		if (button.classList.toggle("active")) {
 			handler.open();
+		} else {
+			handler.close();
 		}
 	}
 }

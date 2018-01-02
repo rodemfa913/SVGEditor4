@@ -1,15 +1,21 @@
-body { font: 13px sans-serif }
-
-button, input, select { font: inherit }
-
-button {
-	background-color: transparent;
-	border: none;
-	margin: 0px;
-	padding: 3px 6px
+body {
+	font: 13px sans-serif;
+	margin: 0px
 }
 
-button:hover { background-color: #eee }
+button, input, select {
+	background-color: white;
+	border: 1px solid gray;
+	border-radius: 3px;
+	font: inherit;
+	margin: 0px;
+	padding: 4px 6px
+}
+
+button:hover, .drop_item:hover, input:hover, li:not(.selected) > span:hover, select:hover {
+	background-color: #eee;
+	color: black
+}
 
 button.active {
 	background-color: gray;
@@ -21,20 +27,24 @@ button.active {
 	position: relative
 }
 
+.drop_container:hover > .drop_content { display: block }
+
 .drop_content {
+	background-color: white;
+	box-shadow: 0px 0px 8px;
+	display: none;
+	padding: 3px 5px;
 	position: absolute;
 	z-index: 1
 }
 
-.float {
-	background-color: white;
-	box-shadow: 0px 0px 8px;
-	margin-bottom: 3px;
-	margin-right: 5px;
-	padding: 3px 5px;
+.drop_item {
+	cursor: pointer;
+	min-width: 100px;
+	padding: 3px 0px
 }
 
-header { margin-bottom: 3px }
+header { background-color: #ddd }
 
 li.selected {
 	background-color: #88f;
@@ -44,37 +54,44 @@ li.selected {
 li > span { cursor: pointer; }
 
 .list {
-	float: right;
 	height: 400px;
 	overflow: auto;
 	width: 200px
 }
 
-.menu_item {
-	cursor: pointer;
-	min-width: 100px;
-	padding: 3px 0px
+@media only screen and (min-width: 800px) { .list { width: 25% } }
+
+.panel {
+	background-color: white;
+	box-shadow: 0px 0px 8px;
+	float: right;
+	margin-left: 15px;
+	margin-top: 9px;
+	padding: 3px 5px
 }
 
-.menu_item:hover { background-color: #eee }
-
-#navi { margin-left: 15px }
-
 svg {
-	left: 0px;
+	cursor: crosshair;
 	position: absolute;
-	top: 0px;
 	z-index: -1
 }
 
-textarea { font: 13px monospace }
+td > input, td > select { width: 150px }
+
+textarea {
+	display: block;
+	font: 13px monospace
+}
 
 th {
 	min-width: 100px;
 	text-align: right
 }
 
-td > input, td > select { width: 150px }
+.toolbox {
+	margin-right: 5px;
+	padding: 3px 5px
+}
 
 ul {
 	list-style-position: inside;

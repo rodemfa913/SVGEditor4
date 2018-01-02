@@ -61,7 +61,7 @@ class HomeHandler {
 	private open(command: string): void {
 		if (command === "load") {
 			this.prompt.innerHTML = "Copy and paste the content of your SVG file into this box.";
-			this.clipArea.value = '<!--example-->\n<svg width="400" height="400">\n' +
+			this.clipArea.value = '<!--example-->\n<svg width="400" height="400" style="background-color: white;">\n' +
 			'  <rect width="100" height="75"/>\n</svg>';
 			this.lcButton.innerHTML = "Load";
 		} else {

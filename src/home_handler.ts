@@ -3,8 +3,10 @@
 class HomeHandler {
 	private clipArea: HTMLTextAreaElement;
 	private clipStyle: CSSStyleDeclaration;
-	private lcButton: HTMLButtonElement;
+	private closeButton: HTMLButtonElement;
 	private listHandler: ListHandler;
+	//private loadStyle: CSSStyleDeclaration;
+	private loadButton: HTMLButtonElement;
 	private page: SVGRectElement;
 	private prompt: HTMLSpanElement;
 	private root: SVGSVGElement;
@@ -12,8 +14,9 @@ class HomeHandler {
 	constructor(lh: ListHandler) {
 		this.clipArea = document.getElementById("cb_area") as HTMLTextAreaElement;
 		this.clipStyle = document.getElementById("clipboard").style;
-		this.lcButton = document.getElementById("lc_button") as HTMLButtonElement;
+		this.closeButton = document.getElementById("close_button") as HTMLButtonElement;
 		this.listHandler = lh;
+		this.loadButton = document.getElementById("load_button") as HTMLButtonElement;
 		this.prompt = document.getElementById("prompt") as HTMLSpanElement;
 
 		let l: Element = document.getElementById("pg");
@@ -25,29 +28,28 @@ class HomeHandler {
 		document.getElementById("new_item").onclick = function() { me.neW(); };
 		document.getElementById("load_item").onclick = function() { me.open("load"); };
 		document.getElementById("save_item").onclick = function() { me.open("save"); };
-		this.lcButton.onclick = function() { me.close(); };
+		this.loadButton.onclick = function() { me.load(); };
+		this.closeButton.onclick = function() { me.close(); };
 	}
 
-	private close(): void {
-		if (this.lcButton.innerHTML === "Load") {
-			let div = document.createElement("DIV") as HTMLDivElement;
-			div.innerHTML = this.clipArea.value;
+	private close(): void { this.clipStyle.display = "none"; }
 
-			let last = div.lastElementChild;
-			if (last === null || !(last instanceof SVGSVGElement)) {
-				this.clipArea.value = "<!--Bad content. Try again-->";
-				return;
-			}
-			let svg = last as SVGSVGElement;
+	private load(): void {
+		let div = document.createElement("DIV") as HTMLDivElement;
+		div.innerHTML = this.clipArea.value;
 
-			this.page.setAttribute("width", svg.getAttribute("width"));
-			this.page.setAttribute("height", svg.getAttribute("height"));
-			this.page.setAttribute("fill", svg.style.backgroundColor);
-
-			this.listHandler.addAll(svg);
+		let last = div.lastElementChild;
+		if (last === null || !(last instanceof SVGSVGElement)) {
+			this.clipArea.value = "<!--Bad content. Try again-->";
+			return;
 		}
+		let svg = last as SVGSVGElement;
 
-		this.clipStyle.display = "none";
+		this.page.setAttribute("width", svg.getAttribute("width"));
+		this.page.setAttribute("height", svg.getAttribute("height"));
+		this.page.setAttribute("fill", svg.style.backgroundColor);
+
+		this.listHandler.addAll(svg);
 	}
 
 	private neW(): void {
@@ -61,12 +63,13 @@ class HomeHandler {
 	private open(command: string): void {
 		if (command === "load") {
 			this.prompt.innerHTML = "Copy and paste the content of your SVG file into this box.";
-			this.clipArea.value = '<!--example-->\n<svg width="400" height="400" style="background-color: white;">\n' +
-			'  <rect width="100" height="75"/>\n</svg>';
-			this.lcButton.innerHTML = "Load";
+			this.clipArea.value = '<!--example-->\n' +
+			'<svg width="400" height="400" style="background-color: white;">\n' +
+			'  <rect x="50" y="50" width="100" height="75"/>\n</svg>';
+			this.loadButton.style.display = "inline-block";
 		} else {
 			this.prompt.innerHTML = "Copy and paste the content of this box into your SVG file.";
-			this.lcButton.innerHTML = "Close";
+			this.loadButton.style.display = "none";
 
 			let div = document.createElement("DIV") as HTMLDivElement;
 
